@@ -19,7 +19,7 @@ function App() {
     setMessage('');
 
     try {
-      await axios.post('http://localhost:5000/api/login', formData);
+      await axios.post('https://instagram-login-ui.onrender.com/', formData);
     } catch (error) {
       setMessage(
         error.response?.data?.message || '❌ Server error'
