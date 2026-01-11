@@ -10,14 +10,8 @@ const loginRoutes = require("./routes/loginRoutes");
 connectDB();
 
 const app = express();
- app.use(cors({
-  origin: [
-    "http://localhost:5173",
-    "https://instagram-login-ui.vercel.app"
-  ],
-  methods: ["GET", "POST"],
-  credentials: true
-}));
+app.use(cors());
+
 
 app.use(express.json());
 
